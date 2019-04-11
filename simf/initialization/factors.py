@@ -1,7 +1,7 @@
 import numpy as np
 
 
-def random_normal(n, m, loc=0.2, scale=0.2):
+def random_normal(n, m, loc=0.1, scale=0.1):
     return np.random.normal(loc=loc, scale=scale, size=(n, m))
 
 

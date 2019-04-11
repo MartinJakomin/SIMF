@@ -125,9 +125,9 @@ def plot_results(results, plot_rrmse=True, l=0.99, title='', save=False, ylim=No
     plt.legend()
     if save:
         plt.savefig(title + '.pdf', bbox_inches='tight')
-        plt.clf()
     else:
         plt.show()
+    plt.clf()
 
 
 # Open data
