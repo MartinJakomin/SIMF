@@ -10,7 +10,7 @@ from simf.initialization import a_col, random_normal, bias_from_data, bias_zero
 class BaseFactorization(object):
 
     def __init__(self, max_iter=20, epsilon=0, regularization=0.02, learning_rate=0.01, init_method='random', bias=True,
-                 precompute_bias=(25, 10), update=True, logger=None):
+                 precompute_bias=(20, 15), update=True, logger=None):
 
         self.log = logger
         if not logger:
@@ -80,7 +80,7 @@ class BaseFactorization(object):
 
     def vstack_factor(self, F, n):
         if self.init_method == 'random':
-            return np.vstack([F, random_normal(n - F.shape[0], F.shape[1])])
+            return np.vstack([F, random_normal(n - F.shape[0], F.shape[1], loc=0, scale=1. / F.shape[1])])
         elif self.init_method == 'a_col':
             return np.vstack([F, a_col(F, n - F.shape[0], F.shape[1])])
 
@@ -114,12 +114,12 @@ class BaseFactorization(object):
         return np.pad(M, [(0, p - n), (0, k - m)], mode='constant', constant_values=0)
 
     def rmse(self, real, pred):
-        if np.isnan(pred).any():
+        if len(pred) < 1 or np.isnan(pred).any():
             return -1
         return np.sqrt(np.average((real - pred) ** 2, axis=0))
 
     def mae(self, real, pred):
-        if np.isnan(pred).any():
+        if len(pred) < 1 or np.isnan(pred).any():
             return -1
         return np.average(np.abs(pred - real), axis=0)
 

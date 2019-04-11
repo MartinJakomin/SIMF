@@ -1,9 +1,8 @@
+import numpy as np
 import time
 from functools import reduce
 
-import numpy as np
-
-from simf.initialization.factors import random_normal as random_init
+from simf.initialization import random_normal as random_init
 from simf.models.base import BaseFactorization
 
 POSSIBLE_FACTORIZATIONS = ['SGD']
@@ -15,7 +14,7 @@ class SIMF(BaseFactorization):
         self.factorization_method = factorization_method
         self.combine_bias = combine_bias
         self.combine_initial_factors = combine_initial_factors
-        super().__init__(*kwargs)
+        super().__init__(**kwargs)
 
     def name(self):
         return "SIMF"
@@ -94,7 +93,7 @@ class SIMF(BaseFactorization):
             self.combine_biases()
 
     def construct_middle_factor(self, n, m):
-        return random_init(n, m)
+        return random_init(n, m, loc=0.1, scale=1. / (n + m))
 
     def combine_factors(self, factors):
         if len(factors) is 1:
@@ -193,7 +192,7 @@ class SIMF(BaseFactorization):
                 if self.bias:
                     p += self.data_averages[rel]
                     if self.combine_bias:
-                        rel = 'combine'
+                        rel = 'combined'
                     p += self.biases[rel][oti][i] + self.biases[rel][otj][j]
                 e = float(v - p)
 
