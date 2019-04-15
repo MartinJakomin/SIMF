@@ -150,7 +150,7 @@ class SIMF(BaseFactorization):
             prediction += self.data_averages[relation]
             if self.combine_bias:
                 relation = 'combined'
-            prediction += self.biases[relation][ot1] + self.biases[relation][ot2]
+            prediction += self.biases[relation][ot1][i] + self.biases[relation][ot2][j]
         return np.clip(prediction, drd, dru)
 
     def predict_stream(self, relation, stream, verbose=False):

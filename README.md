@@ -28,10 +28,10 @@ Test the installation:
     python -c "import simf"
 
 
-## Jupter notebook on mybinder.org
+## Jupyter notebook on mybinder.org
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/MartinJakomin/SIMF/master?filepath=examples)
 
-Try `simf` by running it on Binder.
+Try `simf` by running it in Binder.
 
 
 ## Use
