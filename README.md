@@ -1,5 +1,4 @@
-# SIMF
-Simultaneous incremental matrix factorization: Python implementation.
+# SIMF - Simultaneous Incremental Matrix Factorization
 
 
 ## Dependencies:
@@ -29,6 +28,12 @@ Test the installation:
     python -c "import simf"
 
 
+## Jupter notebook on mybinder.org
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/MartinJakomin/SIMF/master?filepath=examples)
+
+Try `simf` by running it on Binder.
+
+
 ## Use
 Start python and then run the following lines:
 
@@ -51,6 +56,9 @@ Start python and then run the following lines:
 
 
 For more use cases, see the [examples](/examples) folder.
+
+Some of the graphs from the paper can be recreated by running the
+[`yelp.ipynb`](https://mybinder.org/v2/gh/MartinJakomin/SIMF/master?filepath=examples%2Fyelp.ipynb) notebook.
 
 
 ## How to cite
